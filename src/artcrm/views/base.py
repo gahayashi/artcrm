@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+Created on Jan 22, 2015
+@author: Gabriele Hayashi
+'''
 from pyramid.response import Response
 from pyramid.view import view_config
 from sqlalchemy.exc import DBAPIError

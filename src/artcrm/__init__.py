@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+'''
+Created on Jan 22, 2015
+@author: Gabriele Hayashi
+'''
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
 
-from artcrm.models.base import (
-    DBSession,
-    Base,
-    )
+from artcrm.models import DBSession, Base
 
 
 def main(global_config, **settings):

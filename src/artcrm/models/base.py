@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+Created on Jan 22, 2015
+@author: Gabriele Hayashi
+'''
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.scoping import scoped_session
 from sqlalchemy.orm.session import sessionmaker

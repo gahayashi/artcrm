@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/artcrm/__init__.py=utf-8
+encoding//src/artcrm/models/__init__.py=utf-8
+encoding//src/artcrm/models/base.py=utf-8
+encoding//src/artcrm/models/users.py=utf-8
+encoding//src/artcrm/scripts/__init__.py=utf-8
+encoding//src/artcrm/scripts/initializedb.py=utf-8
+encoding//src/artcrm/tests/__init__.py=utf-8
+encoding//src/artcrm/tests/base.py=utf-8
+encoding//src/artcrm/views/__init__.py=utf-8
+encoding//src/artcrm/views/base.py=utf-8
