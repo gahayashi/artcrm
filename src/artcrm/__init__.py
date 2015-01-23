@@ -8,23 +8,23 @@ from artcrm.models.base import (
 
 
 def main(global_config, **settings):
-    # --- Database --- 
+    # --- Database ---
     engine = engine_from_config(settings, 'sqlalchemy.')
-    DBSession.configure(bind=engine)
+    DBSession.configure(bind = engine)
     Base.metadata.bind = engine
-    
-    # --- Configuration --- 
-    config = Configurator(settings=settings)
-    
-    # --- Inclusions --- 
+
+    # --- Configuration ---
+    config = Configurator(settings = settings)
+
+    # --- Inclusions ---
     map(config.include, [
         'pyramid_jinja2'
     ])
-    
-    # --- Routes --- 
-    config.add_static_view('static', 'static', cache_max_age=3600)
+
+    # --- Routes ---
+    config.add_static_view('static', 'static', cache_max_age = 3600)
     config.add_route('home', '/')
-    
-    # --- App --- 
+
+    # --- App ---
     config.scan()
     return config.make_wsgi_app()

@@ -18,3 +18,9 @@ routes:
 	proutes development.ini
 db:
 	initialize_artcrm_db development.ini
+
+clean:
+	find . -iname '*.egg' | xargs '-I{}' rm -rfv '{}'
+	find . -iname '*.egg-*' | xargs '-I{}' rm -rfv '{}'
+	find . -iname '*~' -print -delete
+	find . -iname '*.py[cod]' -print -delete
