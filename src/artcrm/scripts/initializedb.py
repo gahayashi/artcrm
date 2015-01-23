@@ -1,21 +1,12 @@
 import os
 import sys
+
+from pyramid.paster import setup_logging, get_appsettings
+from pyramid.scripts.common import parse_vars
+from sqlalchemy import engine_from_config
 import transaction
 
-from sqlalchemy import engine_from_config
-
-from pyramid.paster import (
-    get_appsettings,
-    setup_logging,
-    )
-
-from pyramid.scripts.common import parse_vars
-
-from ..models import (
-    DBSession,
-    MyModel,
-    Base,
-    )
+from artcrm.models import DBSession, Base, MyModel
 
 
 def usage(argv):
@@ -25,16 +16,16 @@ def usage(argv):
     sys.exit(1)
 
 
-def main(argv=sys.argv):
+def main(argv = sys.argv):
     if len(argv) < 2:
         usage(argv)
     config_uri = argv[1]
     options = parse_vars(argv[2:])
     setup_logging(config_uri)
-    settings = get_appsettings(config_uri, options=options)
+    settings = get_appsettings(config_uri, options = options)
     engine = engine_from_config(settings, 'sqlalchemy.')
-    DBSession.configure(bind=engine)
-    Base.metadata.create_all(engine)
+    DBSession.configure(bind = engine)
+    Base.metadata.create_all(engine) # @UndefinedVariable
     with transaction.manager:
-        model = MyModel(name='one', value=1)
-        DBSession.add(model)
+        model = MyModel(name = 'one', value = 1)
+        DBSession.add(model) # @UndefinedVariable
