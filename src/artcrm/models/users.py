@@ -4,22 +4,20 @@ Created on Jan 22, 2015
 @author: Gabriele Hayashi
 '''
 from datetime import datetime
-import re
 
 from cryptacular.core import DelegatingPasswordManager
 from cryptacular.pbkdf2 import PBKDF2PasswordManager
-from pyramid.i18n import TranslationStringFactory
 from sqlalchemy.ext.declarative.api import declared_attr
 from sqlalchemy.orm import synonym
 from sqlalchemy.orm.mapper import validates
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Unicode, Boolean, DateTime
 
+from artcrm import validators
 from artcrm.models import DBSession
 from artcrm.models.base import Base, BaseModel
 
 
-_ = TranslationStringFactory('artcrm')
 pwman = DelegatingPasswordManager(
     preferred = PBKDF2PasswordManager()
 )
@@ -63,11 +61,7 @@ class Autheticatable(object):
 
     @validates('email')
     def validates_email(self, name, email):
-        assert re.match('[a-zA-Z0-9._+-]+@[a-zA-Z0-9._+-]+', email), _(
-            'error-validates-email',
-            default = 'This field does not look like an email address'
-        )
-        return email
+        return validators.email(name, email)
 
     class AnonymousUser(object):
         def __getattr__(self, name):

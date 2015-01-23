@@ -27,6 +27,9 @@ def main(global_config, **settings):
     config.add_static_view('static', 'static', cache_max_age = 3600)
     config.add_route('home', '/')
 
+    # --- Request Methods ---
+    config.add_request_method('artcrm.models.users.User.get_user', 'user', reify = True)
+
     # --- App ---
     config.scan()
     return config.make_wsgi_app()
