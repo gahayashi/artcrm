@@ -9,6 +9,15 @@ from sqlalchemy import engine_from_config
 from artcrm.models import DBSession, Base
 
 
+VERSION = (0, 1, 0)
+version = '.'.join(str(i) for i in VERSION)
+
+
+def admin_views(config):
+    pass
+def public_views(config):
+    config.add_route('web:root', '/')
+
 def main(global_config, **settings):
     # --- Database ---
     engine = engine_from_config(settings, 'sqlalchemy.')
@@ -25,10 +34,20 @@ def main(global_config, **settings):
 
     # --- Routes ---
     config.add_static_view('static', 'static', cache_max_age = 3600)
-    config.add_route('home', '/')
+    config.include(public_views)
+    config.include(admin_views, 'admin')
 
     # --- Request Methods ---
     config.add_request_method('artcrm.models.users.User.get_user', 'user', reify = True)
+    def sitesettings(*args, **kwargs):
+        site = {
+            'name' : 'ArtCRM',
+            'version' : version,
+            'author' : 'John Doe'
+        }
+        site.update(settings)
+        return site
+    config.add_request_method(sitesettings, 'site', reify = True)
 
     # --- App ---
     config.scan()

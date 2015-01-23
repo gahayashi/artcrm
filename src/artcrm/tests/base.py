@@ -10,7 +10,6 @@ from sqlalchemy.engine import create_engine
 import transaction
 
 from artcrm.models import DBSession, Base, MyModel
-from artcrm.views.base import my_view
 
 
 class TestMyViewSuccessCondition(unittest.TestCase):
@@ -27,13 +26,6 @@ class TestMyViewSuccessCondition(unittest.TestCase):
         DBSession.remove()
         testing.tearDown()
 
-    def test_passing_view(self):
-        request = testing.DummyRequest()
-        info = my_view(request)
-        self.assertEqual(info['one'].name, 'one')
-        self.assertEqual(info['project'], 'artcrm')
-
-
 class TestMyViewFailureCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -43,8 +35,3 @@ class TestMyViewFailureCondition(unittest.TestCase):
     def tearDown(self):
         DBSession.remove()
         testing.tearDown()
-
-    def test_failing_view(self):
-        request = testing.DummyRequest()
-        info = my_view(request)
-        self.assertEqual(info.status_int, 500)

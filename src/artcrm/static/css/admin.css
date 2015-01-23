@@ -1,0 +1,12 @@
+/**
+ * artcrm's admin styles
+ */
+
+body {
+	margin-top: 60px;
+}
+
+.muted {
+	color: silver;
+	font-style: italic;
+}
