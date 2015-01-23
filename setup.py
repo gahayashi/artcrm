@@ -2,6 +2,7 @@ import os
 
 from setuptools import setup, find_packages
 
+
 here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, 'README.md')) as f:
     README = f.read()
@@ -20,7 +21,7 @@ requires = [
     'waitress',
 ]
 
-entry_points="""
+entry_points = """
     [paste.app_factory]
     main = artcrm:main
     [console_scripts]
@@ -28,25 +29,25 @@ entry_points="""
 """
 
 setup(
-    name='artcrm',
-    version='0.0',
-    description='artcrm',
-    long_description=README + '\n\n' + CHANGES,
-    classifiers=[
+    name = 'artcrm',
+    version = '0.0',
+    description = 'artcrm',
+    long_description = README + '\n\n' + CHANGES,
+    classifiers = [
         "Programming Language :: Python",
         "Framework :: Pyramid",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
     ],
-    author='Gabriele Hayashi',
-    author_email='gabriele.hayashi@gmail.com',
-    url='',
-    keywords='web wsgi bfg pylons pyramid',
-    packages=find_packages('src'),
+    author = 'Gabriele Hayashi',
+    author_email = 'gabriele.hayashi@gmail.com',
+    url = '',
+    keywords = 'web wsgi bfg pylons pyramid',
+    packages = find_packages('src'),
     package_dir = {'' : 'src'},
-    include_package_data=True,
-    zip_safe=False,
-    test_suite='artcrm',
-    install_requires=requires,
-    entry_points=entry_points
+    include_package_data = True,
+    zip_safe = False,
+    test_suite = 'artcrm',
+    install_requires = requires,
+    entry_points = entry_points
 )
