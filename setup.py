@@ -24,6 +24,8 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
+    
+    'cryptacular',
 ]
 
 entry_points = """
