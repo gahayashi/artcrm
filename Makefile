@@ -24,3 +24,4 @@ clean:
 	find . -iname '*.egg-*' | xargs '-I{}' rm -rfv '{}'
 	find . -iname '*~' -print -delete
 	find . -iname '*.py[cod]' -print -delete
+	find . -iname '*.sqlite' -print -delete

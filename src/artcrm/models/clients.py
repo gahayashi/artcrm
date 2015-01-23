@@ -23,13 +23,6 @@ class Client(Base, BaseModel):
     last_name = Column(Unicode(128))
     birth = Column(Date, nullable = True)
 
-    # --- Contact Information ---
-    email = Column(Unicode(120), unique = True, nullable = True)
-
-    @validates('email')
-    def validates_email(self, name, email):
-        return validators.email(name, email)
-
 class ClientPhone(Base, BaseModel):
     MOBILE, HOME, WORK, FAX = 'm', 'h', 'w', 'f'
     TYPES = {
@@ -50,6 +43,24 @@ class ClientPhone(Base, BaseModel):
     @validates('number')
     def validates_phones(self, name, phone):
         return validators.phone(name, phone)
+
+class ClientEmail(Base, BaseModel):
+    HOME, WORK = 'h', 'w'
+    TYPES = {
+        HOME: _('home'),
+        WORK: _('work')
+    }
+
+    # --- Relation ---
+    id_client = Column(ForeignKey(Client.id))
+
+    # --- Data ---
+    email = Column(Unicode(120), unique = True)
+    type = Column(Enum(TYPES.keys()))
+
+    @validates('email')
+    def validates_email(self, name, email):
+        return validators.email(name, email)
 
 class ClientLog(Base, BaseModel):
     # --- Admin ---

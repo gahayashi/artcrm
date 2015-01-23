@@ -14,9 +14,9 @@ version = '.'.join(str(i) for i in VERSION)
 
 
 def admin_views(config):
-    pass
+    config.add_route('web:admin', '')
 def public_views(config):
-    config.add_route('web:root', '/')
+    config.add_route('web:root', '')
 
 def main(global_config, **settings):
     # --- Database ---
@@ -43,7 +43,8 @@ def main(global_config, **settings):
         site = {
             'name' : 'ArtCRM',
             'version' : version,
-            'author' : 'John Doe'
+            'author' : 'John Doe',
+            'background' : 'http://localhost/~gabriele/bg.jpeg'
         }
         site.update(settings)
         return site

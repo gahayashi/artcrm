@@ -4,5 +4,7 @@ Created on Jan 22, 2015
 @author: Gabriele Hayashi
 '''
 from base import *
+from clients import *
+from users import *
 
 

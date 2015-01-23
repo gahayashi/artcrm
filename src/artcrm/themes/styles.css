@@ -1,0 +1,14 @@
+/**
+ * artcrm's styles
+ */
+
+body {
+	background-image: url("{{ request.site.background }}");
+	background-color: WhiteSmoke;
+}
+
+.muted, .muted a {
+	color: silver;
+	font-style: italic;
+	text-decoration: none;
+}
